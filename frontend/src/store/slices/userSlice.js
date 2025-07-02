@@ -92,7 +92,7 @@ export const register = (data) => async (dispatch) => {
   dispatch(userSlice.actions.registerRequest());
   try {
     const response = await axios.post(
-      "http://localhost:4000/api/v1/user/register",
+      `${import.meta.env.VITE_BASE_URL}/api/user/register`,
       data,
       {
         withCredentials: true,
@@ -110,7 +110,7 @@ export const login = (data) => async (dispatch) => {
   dispatch(userSlice.actions.loginRequest());
   try {
     const response = await axios.post(
-      "http://localhost:4000/api/v1/user/login",
+      `${import.meta.env.VITE_BASE_URL}/api/user/login`,
       data,
       {
         withCredentials: true,
@@ -128,7 +128,7 @@ export const getUser = () => async (dispatch) => {
   dispatch(userSlice.actions.fetchUserRequest());
   try {
     const response = await axios.get(
-      "http://localhost:4000/api/v1/user/getuser",
+      `${import.meta.env.VITE_BASE_URL}/api/user/getuser`,
       {
         withCredentials: true,
       }
@@ -142,7 +142,7 @@ export const getUser = () => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   try {
     const response = await axios.get(
-      "http://localhost:4000/api/v1/user/logout",
+      `${import.meta.env.VITE_BASE_URL}/api/user/logout`,
       {
         withCredentials: true,
       }
