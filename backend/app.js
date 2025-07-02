@@ -8,7 +8,6 @@ import fileUpload from "express-fileupload";
 import userRouter from "./routes/userRouter.js";
 import jobRouter from "./routes/jobRouter.js";
 import applicationRouter from "./routes/applicationRouter.js";
-// import { newsLetterCron } from "./automation/newsLetterCron.js";
 
 
 const app = express();
@@ -16,7 +15,7 @@ config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin:"http://localhost:5173",
+    origin:"*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -37,11 +36,10 @@ app.get("/hello", (req, res)=> {
   res.send("Hello world")
 })
 
-app.use("/api/v1/user", userRouter);
-app.use("/api/v1/job", jobRouter);
-app.use("/api/v1/application", applicationRouter);
+app.use("/api/user", userRouter);
+app.use("/api/job", jobRouter);
+app.use("/api/application", applicationRouter);
 
-// newsLetterCron()
 connection();
 app.use(errorMiddleware);
 
